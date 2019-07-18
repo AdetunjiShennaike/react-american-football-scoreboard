@@ -113,6 +113,10 @@
   justify-content: space-around;
 }
 
+.playButtons__down,
+.playButtons__togo,
+.playButtons__ball_on,
+.playButtons__quarter,
 .homeButtons__touchdown,
 .homeButtons__fieldGoal,
 .awayButtons__touchdown,

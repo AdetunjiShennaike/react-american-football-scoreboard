@@ -7,6 +7,10 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   let [homeScore, newHomeS] = useState(0);
   let [awayScore, newAwayS] = useState(0);
+  let [downs, newPlay] = useState(0);
+  let [yards, left] = useState(10);
+  let [yardline, position] = useState(20);
+  let [quarters, time] = useState(1);
 
   return (
     <div className="container">
@@ -25,7 +29,17 @@ function App() {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow down={downs} togo={yards} ball={yardline} quarter={quarters} />
+      </section>
+      <section className="buttons">
+        <div className="playButtons">
+          <button className="playButtons__down" onClick={ () => newPlay( downs === 4 ? downs = 0 : downs + 1 )}>Down</button>
+          <button className="playButtons__togo" onClick={ () => left(yards <= 0 ? yards = 10 : yards -= 3)}>Yards Gained</button>{/*convert to text field*/}
+        </div>
+        <div className="playButtons">
+          <button className="playButtons__ball_on" onClick={ () => position(yardline >= 120 ? yardline = 20 : yardline += 3)}>Ball On</button>{/*convert to text field*/}
+          <button className="playButtons__quarter" onClick={ () => time( quarters === 4 ? quarters = 1 : quarters + 1 )}>Quarter</button>
+        </div>
       </section>
       <section className="buttons">
         <div className="homeButtons">
